@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinhood (HOOD) Q3 2026 财报分析</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f2;color:#333;font-size:14px;line-height:1.6}
+.header{background:#0b0b0b;color:#fff;padding:32px 40px;border-bottom:5px solid #CCFF00}
+.header h1{font-size:28px;font-weight:700;margin-bottom:4px}
+.header h1 span{color:#CCFF00}
+.header .sub{font-size:15px;opacity:.85}
+.header .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.header .tag{background:rgba(204,255,0,.15);border:1px solid rgba(204,255,0,.4);color:#e8ff99;padding:3px 12px;border-radius:12px;font-size:12px}
+.container{max-width:1280px;margin:0 auto;padding:20px}
+.section{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:20px;padding:24px}
+.section-title{font-size:18px;font-weight:700;color:#111;border-bottom:3px solid #9acc00;padding-bottom:8px;margin-bottom:16px}
+.summary-box{background:#f7fbe9;border-left:4px solid #9acc00;padding:16px 20px;border-radius:0 8px 8px 0}
+.summary-box li{margin-bottom:7px;list-style:none;padding-left:20px;position:relative}
+.summary-box li:before{content:"▸";position:absolute;left:0;color:#6b8f00;font-weight:bold}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.metric-card{background:#fafbf7;border:1px solid #e3e8d4;border-radius:10px;padding:18px;text-align:center}
+.metric-card.warn{background:#fffaf0;border-color:#f3cf8a}
+.metric-card .label{font-size:12px;color:#666;text-transform:uppercase;letter-spacing:.5px}
+.metric-card .value{font-size:25px;font-weight:700;color:#111;margin:6px 0}
+.metric-card .sub{font-size:11px;color:#999}
+.metric-card .change{font-size:12px;font-weight:600}
+.up{color:#0a8a2e}.down{color:#cc3333}.neutral{color:#666}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#111;color:#fff;padding:10px 12px;text-align:right;font-weight:600}
+th:first-child{text-align:left}
+td{padding:9px 12px;text-align:right;border-bottom:1px solid #eee}
+td:first-child{text-align:left;font-weight:500}
+tr:hover{background:#fafcf4}
+tr.subtotal{background:#f3f8e3;font-weight:700}
+tr.subtotal td{border-top:2px solid #9acc00;border-bottom:2px solid #9acc00}
+tr.adj td{color:#666;font-style:italic}
+tr.adj td:first-child{padding-left:26px;font-weight:400}
+tr.flag{background:#fff8e1}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:820px){.two-col,.signal-grid{grid-template-columns:1fr}}
+.signal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.signal-box{padding:16px;border-radius:8px}
+.signal-positive{background:#f0faf0;border-left:4px solid #0a8a2e}
+.signal-negative{background:#fef5f5;border-left:4px solid #cc3333}
+.signal-box h4{font-size:14px;margin-bottom:8px}
+.signal-box li{margin-bottom:6px;font-size:13px;list-style:none;padding-left:18px;position:relative}
+.signal-positive li:before{content:"✅";position:absolute;left:0;font-size:11px}
+.signal-negative li:before{content:"⚠️";position:absolute;left:0;font-size:11px}
+.footnote{font-size:11px;color:#888;margin-top:8px}
+.src{font-size:10px;color:#6b8f00;vertical-align:super;cursor:help}
+.note{margin-top:12px;padding:14px 18px;border-radius:8px;font-size:13px}
+.note.green{background:#f3f8e3}.note.amber{background:#fff8e1;color:#6d5300}.note.red{background:#fdecea;color:#7f1d1d}
+.alert{background:#fff8e1;border:2px solid #f0c36d;border-radius:8px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:#5c4400}
+.kpi-strip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.kpi-pill{background:#111;color:#CCFF00;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.kpi-pill.warn{background:#d68910;color:#fff}
+.data-note{background:#f0f4fa;border:1px solid #c9d6ea;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:12px;color:#2c3e5c}
+.owner-layer{background:linear-gradient(135deg,#0b0b0b,#1c2410);color:#fff;border-radius:10px;padding:24px;margin-bottom:20px}
+.owner-layer .section-title{color:#CCFF00;border-bottom-color:#CCFF00}
+.asset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.asset-card{background:rgba(255,255,255,.06);border:1px solid rgba(204,255,0,.2);border-radius:8px;padding:16px}
+.asset-card h4{color:#d9ff4d;font-size:14px;margin-bottom:8px}
+.asset-card p{font-size:13px;color:#ccc;line-height:1.55}
+.asset-card .score{display:inline-block;background:#CCFF00;color:#111;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700;margin-top:8px}
+.collapsible{cursor:pointer;user-select:none}
+.collapsible:after{content:" ▲";font-size:10px;color:#999}
+.collapsible.closed:after{content:" ▼"}
+.collapse-content.hide{display:none}
+.chart{text-align:center;margin:12px 0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>🪶</span> Robinhood Markets (HOOD) · Q3 2026 财报分析</h1>
+  <div class="sub">Third Quarter 2026 (Jul–Sep) · 发布日期 2026年10月27日 · NASDAQ: HOOD</div>
+  <div class="tags">
+    <span class="tag">U.S. GAAP · 未经审计</span>
+    <span class="tag">USD 百万</span>
+    <span class="tag">零售券商 / 预测市场 / 加密</span>
+    <span class="tag">Amended Exhibit 99.1</span>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="data-note">
+  📁 <strong>数据来源：</strong>两份公司原始文件——(1) <strong>Q3 2026 Amended Exhibit 99.1</strong>（18页新闻稿，含完整资产负债表、利润表、现金流量表及GAAP/Non-GAAP调节表）；(2) <strong>Q3 2026 Earnings Presentation</strong>（49页，含9季度趋势、收入拆分、利息收入明细、证券借贷与客户匹配摊销）。市场共识与股价反应来自网络搜索，已单独标注。标注 <span class="src">[Ex p.X]</span> = 新闻稿页码，<span class="src">[Deck p.X]</span> = 演示文稿页码。
+</div>
+
+<div class="alert">
+  🔎 <strong>读这份财报的关键：GAAP净利润-14%，但主营业务其实在增长。</strong><br>
+  营业利润（收入−营业费用）从 $635M 升至 <strong>$685M（+8% YoY）</strong>。净利润下滑有两个非经营原因：<br>
+  ① <strong>有效税率从12.3%升至23.8%</strong>——若按去年同期税率，本季净利润约为 $548M（仅-1%）；<br>
+  ② <strong>$67M Robinhood Ventures Fund I（RVI）按市值计价未实现亏损</strong>（上季度同一来源是+$129M收益，造成QoQ大幅波动）。<br>
+  另需注意：<strong>Adjusted EPS是本季新引入的指标</strong>，各数据商的"共识"口径不一（$0.55–$0.64），所谓"beat/miss"结论并不稳固。
+</div>
+
+<!-- EXEC SUMMARY -->
+<div class="section">
+  <div class="section-title">Executive Summary / 执行摘要</div>
+  <div class="summary-box">
+    <li><strong>总收入创纪录 $1,424M（+12% YoY / +9% QoQ）</strong>，但增速明显放缓：LTM收入增速从一年前的75%降至21%，"Rule of 40"从131%降至77% <span class="src">[Ex p.6, Deck p.22]</span></li>
+    <li><strong>收入结构剧烈切换：加密货币收入-55%（$268M→$120M），预测市场/事件合约暴增6倍（$27M→$173M）</strong>——事件合约首次显著超过加密收入，占总收入12%。期权+31%、股票+41%，均创纪录交易量 <span class="src">[Ex p.1, Deck p.14]</span></li>
+    <li><strong>净利息收入-9%至$415M</strong>：保证金利息+59%（$153M→$244M）被证券借贷净收入转负（+$87M→−$19M，难借券需求下降）和利率下降抵消 <span class="src">[Deck p.15, p.41]</span></li>
+    <li><strong>GAAP净利润$476M（-14%），摊薄EPS $0.51（-16%）；Adjusted EPS $0.60（-3% YoY，+9% QoQ）</strong>。营业利润实际+8%，差异来自税率正常化与RVI市值波动 <span class="src">[Ex p.6, p.13]</span></li>
+    <li><strong>Adjusted EBITDA创纪录 $808M（+9%），利润率57%</strong>；Adj. Opex+SBC仅+8%，核心经营杠杆仍在 <span class="src">[Ex p.11]</span></li>
+    <li><strong>平台资产$396B（+19%），Gold订阅5.2M（+34%，渗透率18%，新客户约40%）</strong>；但<strong>净存款$15.7B为近5季最低（年化增速17%）</strong>，且<strong>MAU降至13.0M（同比-0.8M，环比-1.1M）</strong> <span class="src">[Deck p.3, p.35]</span></li>
+    <li><strong>Q4开局强劲：10月净存款月初至今已超$13B（含$6B来自Dell家族对Trump Accounts的捐赠）</strong>。全年Adj. Opex+SBC指引上限下调$25M至$2.675–2.75B，但<strong>隐含Q4费用$765–840M，较Q3跳升15–26%</strong> <span class="src">[Ex p.1, Deck p.18]</span></li>
+    <li><strong>市场反应：</strong>收盘$94.56，盘后跌约7%至$87.60。收入$1.424B略低于约$1.43B共识；Adj. EBITDA $808M高于约$794M共识 <span class="src">[Web]</span></li>
+  </div>
+</div>
+
+<!-- KEY METRICS -->
+<div class="section">
+  <div class="section-title">Key Metrics / 核心指标</div>
+  <div class="kpi-strip">
+    <span class="kpi-pill">收入 $1.42B 历史新高</span>
+    <span class="kpi-pill">事件合约 6x</span>
+    <span class="kpi-pill">Adj. EBITDA $808M 新高</span>
+    <span class="kpi-pill">14 条 $100M+ 业务线</span>
+    <span class="kpi-pill warn">加密 -55%</span>
+    <span class="kpi-pill warn">MAU -1.1M QoQ</span>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card"><div class="label">Total Net Revenues / 总收入</div><div class="value">$1,424M</div><div class="sub">LTM $5.1B</div><div class="change up">▲ +12% YoY / +9% QoQ</div></div>
+    <div class="metric-card"><div class="label">Operating Income / 营业利润*</div><div class="value">$685M</div><div class="sub">利润率 48.1%（去年49.8%）</div><div class="change up">▲ +8% YoY</div></div>
+    <div class="metric-card warn"><div class="label">GAAP Net Income / 净利润</div><div class="value">$476M</div><div class="sub">净利率33%（去年44%）</div><div class="change down">▼ -14% YoY / -17% QoQ</div></div>
+    <div class="metric-card warn"><div class="label">Diluted EPS (GAAP)</div><div class="value">$0.51</div><div class="sub">含RVI亏损 -$0.07</div><div class="change down">▼ -16% YoY</div></div>
+    <div class="metric-card"><div class="label">Adjusted EPS (新指标)</div><div class="value">$0.60</div><div class="sub">Q2: $0.55 · Q3'25: $0.61</div><div class="change neutral">-3% YoY / +9% QoQ</div></div>
+    <div class="metric-card"><div class="label">Adjusted EBITDA</div><div class="value">$808M</div><div class="sub">利润率 57%</div><div class="change up">▲ +9% YoY / +9% QoQ</div></div>
+    <div class="metric-card"><div class="label">Total Platform Assets / 平台资产</div><div class="value">$396B</div><div class="sub">净存款 $15.7B（年化17%）</div><div class="change up">▲ +19% YoY / +7% QoQ</div></div>
+    <div class="metric-card"><div class="label">Gold Subscribers / 金卡订阅</div><div class="value">5.2M</div><div class="sub">渗透率 18% · ARPU $200</div><div class="change up">▲ +34% YoY</div></div>
+  </div>
+  <div class="footnote">* 营业利润 = 总收入 − 总营业费用，为本分析推算（公司未单列此行）。数据来源: Ex p.1, p.6, p.11, p.13; Deck p.3–4</div>
+</div>
+
+<!-- REVENUE TREND -->
+<div class="section">
+  <div class="section-title">Revenue Trend / 9季度收入趋势与结构</div>
+  <div class="chart">
+    <svg viewBox="0 0 760 330" style="max-width:760px;width:100%">
+      <line x1="60" y1="270" x2="740" y2="270" stroke="#ccc"/>
+      <text x="55" y="274" font-size="10" fill="#888" text-anchor="end">0</text>
+      <text x="55" y="196" font-size="10" fill="#888" text-anchor="end">$500</text><line x1="60" y1="192" x2="740" y2="192" stroke="#f0f0f0"/>
+      <text x="55" y="118" font-size="10" fill="#888" text-anchor="end">$1,000</text><line x1="60" y1="114" x2="740" y2="114" stroke="#f0f0f0"/>
+      <text x="55" y="40" font-size="10" fill="#888" text-anchor="end">$1,500</text><line x1="60" y1="36" x2="740" y2="36" stroke="#f0f0f0"/>
+      <g id="bars"></g>
+      <rect x="230" y="306" width="12" height="12" fill="#9acc00"/><text x="248" y="316" font-size="11">交易收入</text>
+      <rect x="330" y="306" width="12" height="12" fill="#bdbdb4"/><text x="348" y="316" font-size="11">净利息收入</text>
+      <rect x="440" y="306" width="12" height="12" fill="#555"/><text x="458" y="316" font-size="11">其他收入</text>
+    </svg>
+  </div>
+  <table>
+    <tr><th>$M</th><th>Q3'25</th><th>Q4'25</th><th>Q1'26</th><th>Q2'26</th><th>Q3'26</th><th>YoY</th><th>QoQ</th></tr>
+    <tr><td>Transaction-based / 交易收入</td><td>730</td><td>776</td><td>623</td><td>776</td><td><strong>867</strong></td><td class="up">+19%</td><td class="up">+12%</td></tr>
+    <tr><td>Net interest / 净利息收入</td><td>456</td><td>411</td><td>359</td><td>389</td><td><strong>415</strong></td><td class="down">-9%</td><td class="up">+7%</td></tr>
+    <tr><td>Other / 其他收入</td><td>88</td><td>96</td><td>85</td><td>143</td><td><strong>142</strong></td><td class="up">+61%</td><td class="neutral">-1%</td></tr>
+    <tr class="subtotal"><td>Total Net Revenues</td><td>1,274</td><td>1,283</td><td>1,067</td><td>1,308</td><td>1,424</td><td class="up">+12%</td><td class="up">+9%</td></tr>
+    <tr><td style="color:#888">ARPU（年化）</td><td>$191</td><td>$191</td><td>$157</td><td>$187</td><td><strong>$200</strong></td><td class="up">+5%</td><td class="up">+7%</td></tr>
+  </table>
+  <div class="footnote">数据来源: Deck p.13, Ex p.6。Q3'26其他收入含$47M Trump Accounts服务收入。</div>
+</div>
+
+<!-- TRANSACTION MIX -->
+<div class="section">
+  <div class="section-title">Transaction Revenue Mix / 交易收入拆分——本季最重要的结构变化</div>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>$M</th><th>Q3'25</th><th>Q1'26</th><th>Q2'26</th><th>Q3'26</th><th>YoY</th></tr>
+        <tr><td><strong>Options / 期权</strong></td><td>304</td><td>260</td><td>342</td><td><strong>399</strong></td><td class="up">+31%</td></tr>
+        <tr><td><strong>Event Contracts / 事件合约</strong></td><td>27</td><td>104</td><td>156</td><td><strong>173</strong></td><td class="up">6.4x</td></tr>
+        <tr><td><strong>Equities / 股票</strong></td><td>86</td><td>82</td><td>129</td><td><strong>121</strong></td><td class="up">+41%</td></tr>
+        <tr><td><strong>Crypto / 加密货币</strong></td><td>268</td><td>134</td><td>100</td><td><strong>120</strong></td><td class="down">-55%</td></tr>
+        <tr><td>Other / 其他</td><td>45</td><td>43</td><td>49</td><td>54</td><td class="up">+20%</td></tr>
+        <tr class="subtotal"><td>Total Transaction</td><td>730</td><td>623</td><td>776</td><td>867</td><td class="up">+19%</td></tr>
+      </table>
+      <div class="footnote">Deck p.14 · Q3'26加密收入含$26M Robinhood Chain净收入</div>
+    </div>
+    <div>
+      <table>
+        <tr><th>运营量指标</th><th>Q3'26</th><th>YoY</th></tr>
+        <tr><td>Equity Notional Volume</td><td>$992B（纪录）</td><td class="up">+53%</td></tr>
+        <tr><td>Options Contracts Traded</td><td>905M（纪录）</td><td class="up">+48%</td></tr>
+        <tr><td>Event Contracts Traded</td><td>16.4B（纪录）</td><td class="up">7x+</td></tr>
+        <tr><td>Crypto Notional Volume</td><td>$50B</td><td class="down">-38%</td></tr>
+        <tr class="adj"><td>其中 Robinhood App</td><td>$21B</td><td class="down">-48%</td></tr>
+        <tr class="adj"><td>其中 Bitstamp</td><td>$29B</td><td class="down">-28%</td></tr>
+        <tr><td>Margin Book / 融资余额</td><td>$22.1B（纪录）</td><td class="up">+59%</td></tr>
+      </table>
+      <div class="footnote">Ex p.3</div>
+    </div>
+  </div>
+  <div class="note amber">
+    <strong>解读：</strong>一年前加密是Robinhood第二大交易收入来源（占交易收入37%），现在只占14%；事件合约从3.7%升至20%。这说明<strong>Robinhood的"高频投机需求"在迁移，而它成功地接住了这股迁移</strong>——用户从加密转向预测市场与期权，收入总量反而增长19%。但这也意味着收入增量越来越依赖<strong>监管尚未定型的预测市场</strong>：公司在前瞻性声明中明确提到，州级执法行动可能"立即或随后阻止我们提供事件合约"<span class="src">[Ex p.14]</span>。
+  </div>
+</div>
+
+<!-- NII -->
+<div class="section">
+  <div class="section-title">Net Interest Revenue Decomposition / 净利息收入拆解</div>
+  <table>
+    <tr><th>$M</th><th>Q3'25</th><th>Q3'26</th><th>变动</th><th>Q3'26 年化收益率</th></tr>
+    <tr><td><strong>Margin interest / 保证金利息</strong></td><td>153</td><td><strong>244</strong></td><td class="up">+91</td><td>4.54%</td></tr>
+    <tr><td>Credit card, net / 信用卡</td><td>17</td><td>50</td><td class="up">+33</td><td>11.82%</td></tr>
+    <tr><td>Interest on corporate cash / 公司现金</td><td>39</td><td>47</td><td class="up">+8</td><td>—</td></tr>
+    <tr><td>Segregated cash & deposits / 隔离现金</td><td>103</td><td>55</td><td class="down">−48</td><td>2.09%*</td></tr>
+    <tr><td>Cash Sweep / 现金归集（表外）</td><td>64</td><td>45</td><td class="down">−19</td><td>0.59%</td></tr>
+    <tr class="flag"><td><strong>Securities lending, net / 证券借贷净额</strong></td><td>87</td><td><strong>(19)</strong></td><td class="down"><strong>−106</strong></td><td>—</td></tr>
+    <tr><td>Interest expense (credit facilities)</td><td>(8)</td><td>(8)</td><td>0</td><td>—</td></tr>
+    <tr class="subtotal"><td>Total Net Interest Revenues</td><td>456</td><td>415</td><td class="down">−41 (−9%)</td><td>2.26%</td></tr>
+  </table>
+  <div class="footnote">Deck p.15, p.39, p.41 · *Cash and deposits合计收益率 · 分项加总与总额因四舍五入可能有±1差异</div>
+  <div class="note green">
+    <strong>解读：</strong>净利息收入下滑<strong>几乎全部来自证券借贷</strong>（−$106M，难借券需求下降；含现金抵押利息的证券借贷总收入$108M，-38%）以及降息对隔离现金与现金归集的影响（合计−$67M）。而<strong>结构性增长引擎非常强</strong>：生息资产创纪录$77B（+19%），保证金利息+59%，信用卡+194%。2026年2月公司把超$6B现金归集资金转为客户自由现金余额来支持融资业务——这是<strong>主动把低收益资金（0.59%）调配到高收益用途（4.54%）</strong>的资产负债表管理。
+  </div>
+</div>
+
+<!-- P&L -->
+<div class="section">
+  <div class="section-title collapsible" onclick="tg(this)">Income Statement / GAAP利润表</div>
+  <div class="collapse-content">
+    <table>
+      <tr><th>$M</th><th>Q3'25</th><th>Q2'26</th><th>Q3'26</th><th>YoY</th><th>QoQ</th><th>9M'26</th></tr>
+      <tr class="subtotal"><td>Total Net Revenues</td><td>1,274</td><td>1,308</td><td>1,424</td><td class="up">+12%</td><td class="up">+9%</td><td>3,799 (+19%)</td></tr>
+      <tr class="adj"><td>Brokerage and transaction</td><td>56</td><td>62</td><td>68</td><td>+21%</td><td>+10%</td><td>190</td></tr>
+      <tr class="adj"><td>Technology and development</td><td>237</td><td>256</td><td>254</td><td>+7%</td><td>−1%</td><td>751</td></tr>
+      <tr class="adj"><td>Operations</td><td>33</td><td>57</td><td>79</td><td class="down">+139%</td><td>+39%</td><td>174</td></tr>
+      <tr class="adj"><td>Provision for credit losses / 信用损失准备</td><td>26</td><td>56</td><td>71</td><td class="down">+173%</td><td>+27%</td><td>163</td></tr>
+      <tr class="adj"><td>Marketing</td><td>102</td><td>104</td><td>104</td><td>+2%</td><td>0%</td><td>315</td></tr>
+      <tr class="adj"><td>General and administrative</td><td>185</td><td>199</td><td>163</td><td class="up">−12%</td><td class="up">−18%</td><td>536</td></tr>
+      <tr class="subtotal"><td>Total Operating Expenses</td><td>639</td><td>734</td><td>739</td><td class="down">+16%</td><td>+1%</td><td>2,129 (+22%)</td></tr>
+      <tr><td><strong>Operating Income (推算)</strong></td><td>635</td><td>574</td><td><strong>685</strong></td><td class="up">+8%</td><td class="up">+19%</td><td>1,670</td></tr>
+      <tr class="flag"><td>Other income (expense), net</td><td>(1)</td><td>135</td><td>(60)</td><td>NM</td><td>NM</td><td>75</td></tr>
+      <tr class="subtotal"><td>Income Before Taxes</td><td>634</td><td>709</td><td>625</td><td class="neutral">−1%</td><td class="down">−12%</td><td>1,745</td></tr>
+      <tr class="adj"><td>Provision for income taxes</td><td>78</td><td>136</td><td>149</td><td class="down">+91%</td><td>+10%</td><td>350</td></tr>
+      <tr class="flag"><td style="color:#888">— 有效税率</td><td>12.3%</td><td>19.2%</td><td><strong>23.8%</strong></td><td class="down">+11.5pp</td><td>+4.6pp</td><td>20.1%</td></tr>
+      <tr class="subtotal"><td>Net Income</td><td>556</td><td>573</td><td>476</td><td class="down">−14%</td><td class="down">−17%</td><td>1,395 (+9%)</td></tr>
+      <tr class="adj"><td>Less: NCI</td><td>—</td><td>12</td><td>8</td><td></td><td></td><td>16</td></tr>
+      <tr><td>Net Income attributable to Robinhood</td><td>556</td><td>561</td><td>468</td><td class="down">−16%</td><td class="down">−17%</td><td>1,379</td></tr>
+      <tr><td>Diluted EPS</td><td>$0.61</td><td>$0.62</td><td><strong>$0.51</strong></td><td class="down">−16%</td><td class="down">−18%</td><td>$1.51</td></tr>
+      <tr><td>Diluted shares (M)</td><td>918</td><td>912</td><td>911</td><td>−1%</td><td>0%</td><td>913</td></tr>
+    </table>
+    <div class="footnote">Ex p.6–7 · 营业利润与有效税率为本分析推算</div>
+  </div>
+</div>
+
+<!-- NON-GAAP -->
+<div class="section">
+  <div class="section-title collapsible" onclick="tg(this)">GAAP → Non-GAAP Reconciliation / 调节表</div>
+  <div class="collapse-content">
+    <div class="two-col">
+      <div>
+        <h4 style="margin-bottom:6px">Adjusted Net Income & EPS（新指标）</h4>
+        <table>
+          <tr><th>$M</th><th>Q3'25</th><th>Q2'26</th><th>Q3'26</th></tr>
+          <tr><td>NI attributable to Robinhood</td><td>556</td><td>561</td><td>468</td></tr>
+          <tr class="adj"><td>+ SBC (CFO transition & restructuring)</td><td>—</td><td>14</td><td>2</td></tr>
+          <tr class="adj"><td>+ Restructuring charges</td><td>—</td><td>23</td><td>—</td></tr>
+          <tr class="flag"><td style="padding-left:26px">+ Unrealized/realized losses (gains)（RVI）</td><td>—</td><td>(129)</td><td><strong>67</strong></td></tr>
+          <tr class="adj"><td>+ Amortization of intangibles</td><td>7</td><td>8</td><td>9</td></tr>
+          <tr class="adj"><td>+ Tax impact</td><td>(2)</td><td>23</td><td>(4)</td></tr>
+          <tr class="subtotal"><td>Adjusted Net Income</td><td>561</td><td>500</td><td>542</td></tr>
+          <tr><td>Diluted EPS (GAAP)</td><td>$0.61</td><td>$0.62</td><td>$0.51</td></tr>
+          <tr><td><strong>Adjusted EPS</strong></td><td>$0.61</td><td>$0.55</td><td><strong>$0.60</strong></td></tr>
+        </table>
+        <div class="footnote">Ex p.13</div>
+      </div>
+      <div>
+        <h4 style="margin-bottom:6px">Adjusted EBITDA</h4>
+        <table>
+          <tr><th>$M</th><th>Q3'25</th><th>Q2'26</th><th>Q3'26</th></tr>
+          <tr><td>Net income</td><td>556</td><td>573</td><td>476</td></tr>
+          <tr class="adj"><td>+ Interest (debt)</td><td>8</td><td>10</td><td>10</td></tr>
+          <tr class="adj"><td>+ Income taxes</td><td>78</td><td>136</td><td>149</td></tr>
+          <tr class="adj"><td>+ D&A</td><td>22</td><td>23</td><td>26</td></tr>
+          <tr><td>EBITDA</td><td>664</td><td>742</td><td>661</td></tr>
+          <tr class="adj"><td>+ SBC</td><td>78</td><td>105</td><td>80</td></tr>
+          <tr class="adj"><td>+ Restructuring</td><td>—</td><td>23</td><td>—</td></tr>
+          <tr class="adj"><td>+ Unrealized/realized losses (gains)</td><td>—</td><td>(129)</td><td>67</td></tr>
+          <tr class="subtotal"><td>Adjusted EBITDA</td><td>742</td><td>741</td><td>808</td></tr>
+          <tr><td style="color:#888">— Margin</td><td>58%</td><td>57%</td><td>57%</td></tr>
+        </table>
+        <div class="footnote">Ex p.11</div>
+      </div>
+    </div>
+    <h4 style="margin:12px 0 6px">Adjusted Operating Expenses & SBC</h4>
+    <table>
+      <tr><th>$M</th><th>Q3'25</th><th>Q2'26</th><th>Q3'26</th><th>YoY</th></tr>
+      <tr><td>Total operating expenses (GAAP)</td><td>639</td><td>734</td><td>739</td><td>+16%</td></tr>
+      <tr class="adj"><td>− Provision for credit losses</td><td>(26)</td><td>(56)</td><td>(71)</td><td></td></tr>
+      <tr class="adj"><td>− SBC (CFO transition + restructuring)</td><td>—</td><td>(14)</td><td>(2)</td><td></td></tr>
+      <tr class="adj"><td>− Restructuring / interest exp.</td><td>—</td><td>(23)</td><td>(2)</td><td></td></tr>
+      <tr class="subtotal"><td>Adjusted Opex and SBC</td><td>613</td><td>641</td><td>664</td><td class="up">+8%</td></tr>
+      <tr><td style="color:#888">— 占收入比</td><td>48.1%</td><td>49.0%</td><td>46.6%</td><td class="up">−1.5pp</td></tr>
+    </table>
+    <div class="note amber"><strong>口径提醒：</strong>Adjusted Net Income/EPS 本季首次推出，剔除了投资收益（损）。上季度RVI去合并产生+$129M收益时，这一调整<em>压低</em>了Adjusted EPS（$0.55 &lt; GAAP $0.62）；本季RVI亏损时它<em>抬高</em>了Adjusted EPS（$0.60 &gt; GAAP $0.51）。调整方向是双向的、口径前后一致，这一点值得肯定；但由于是新指标，历史可比性有限。</div>
+  </div>
+</div>
+
+<!-- KPI -->
+<div class="section">
+  <div class="section-title">Customer & Asset KPIs / 客户与资产指标</div>
+  <table>
+    <tr><th>指标</th><th>Q3'25</th><th>Q4'25</th><th>Q1'26</th><th>Q2'26</th><th>Q3'26</th><th>YoY</th></tr>
+    <tr><td>Funded Customers (M)</td><td>26.8</td><td>27.0</td><td>27.4</td><td>28.4</td><td><strong>28.7</strong></td><td class="up">+7%</td></tr>
+    <tr><td>Gold Subscribers (M)</td><td>3.88</td><td>4.18</td><td>4.34</td><td>4.84</td><td><strong>5.18</strong></td><td class="up">+34%</td></tr>
+    <tr><td style="color:#888">— Gold 渗透率</td><td>14.5%</td><td>15.5%</td><td>15.8%</td><td>17.0%</td><td><strong>18.0%</strong></td><td class="up">+3.5pp</td></tr>
+    <tr><td>Total Platform Assets ($B)</td><td>333</td><td>322</td><td>307</td><td>369</td><td><strong>396</strong></td><td class="up">+19%</td></tr>
+    <tr><td>Net Deposits ($B)</td><td>20.4</td><td>15.9</td><td>17.7</td><td>21.7</td><td><strong>15.7</strong></td><td class="down">−23%</td></tr>
+    <tr><td style="color:#888">— 年化增速</td><td>29%</td><td>19%</td><td>22%</td><td>28%</td><td><strong>17%</strong></td><td class="down">−12pp</td></tr>
+    <tr class="flag"><td>Monthly Active Users (M)</td><td>13.8</td><td>13.0</td><td>13.5</td><td>14.1</td><td><strong>13.0</strong></td><td class="down">−0.8M</td></tr>
+    <tr><td>Retirement AUC ($B)</td><td>24.2*</td><td>—</td><td>—</td><td>—</td><td><strong>36.6</strong></td><td class="up">+51%</td></tr>
+  </table>
+  <div class="footnote">Deck p.3, p.35; Ex p.1–3 · *由+51%反推 · 7月起平台资产与净存款纳入Trump Accounts</div>
+  <div class="note amber">
+    <strong>两个方向相反的信号：</strong>付费用户与资产在加速（Gold渗透率连续5季上升、新客户约40%订阅Gold、Retirement +51%），但<strong>MAU环比下降110万、净存款为5季最低</strong>。合理的解读是：<strong>Robinhood正在从"大众流量平台"转向"高价值活跃交易者+财富管理平台"</strong>——用户总数增长放缓，但每个用户的价值（ARPU $200创新高）在上升。10月$13B的月度净存款（含$6B Dell捐赠）说明Q3的低点可能是季节性/一次性的，但剔除Dell后的有机趋势需要Q4数据验证。
+  </div>
+</div>
+
+<!-- BALANCE SHEET -->
+<div class="section">
+  <div class="section-title collapsible" onclick="tg(this)">Balance Sheet / 资产负债表</div>
+  <div class="collapse-content">
+    <div class="two-col">
+      <table>
+        <tr><th>$M</th><th>Dec 31, 2025</th><th>Sep 30, 2026</th></tr>
+        <tr><td><strong>Cash and cash equivalents</strong></td><td>4,261</td><td><strong>5,829</strong></td></tr>
+        <tr><td>Segregated cash & securities</td><td>5,749</td><td>13,443</td></tr>
+        <tr><td>Receivables from users, net（含保证金）</td><td>17,994</td><td>23,598</td></tr>
+        <tr><td>Securities borrowed</td><td>2,408</td><td>4,781</td></tr>
+        <tr><td>User-held fractional shares</td><td>3,782</td><td>5,123</td></tr>
+        <tr><td>Deferred customer match incentives（流动+非流动）</td><td>613</td><td>804</td></tr>
+        <tr><td>Goodwill + Intangibles</td><td>553</td><td>746</td></tr>
+        <tr class="subtotal"><td>Total Assets</td><td>38,137</td><td>58,271</td></tr>
+        <tr><td>Payables to users</td><td>11,986</td><td>18,473</td></tr>
+        <tr><td>Securities loaned</td><td>11,626</td><td>19,480</td></tr>
+        <tr class="flag"><td><strong>Long-term borrowings（新增）</strong></td><td>—</td><td><strong>2,660</strong></td></tr>
+        <tr class="subtotal"><td>Total Liabilities</td><td>28,986</td><td>48,193</td></tr>
+        <tr><td>Accumulated deficit</td><td>(2,152)</td><td>(773)</td></tr>
+        <tr class="subtotal"><td>Total Stockholders' Equity</td><td>9,151</td><td>10,078</td></tr>
+      </table>
+      <div>
+        <table>
+          <tr><th>资本与流动性</th><th>数值</th></tr>
+          <tr><td>公司现金+投资+稳定币</td><td><strong>$6.0B</strong>（+$1.6B YoY）</td></tr>
+          <tr><td>可用信贷额度</td><td>$4.9B</td></tr>
+          <tr><td>0%可转债（2026年6月发行，2029年10月到期）</td><td>$2.2B</td></tr>
+          <tr><td>Q3回购</td><td>$25M（0.2M股，均价约$105）</td></tr>
+          <tr><td>YTD回购</td><td>约$690M（7.7M股）</td></tr>
+          <tr><td>$1.5B回购授权剩余</td><td>约$1,350M</td></tr>
+          <tr><td>摊薄股本</td><td>918M（YoY基本持平）</td></tr>
+          <tr><td>未摊销客户匹配奖励</td><td>约$768M（加权约4年）</td></tr>
+        </table>
+        <div class="note amber" style="margin-top:8px"><strong>注意：</strong>①Robinhood首次出现长期借款（$2.66B），主要是0%可转债及信用卡融资信托借款；②Q3回购骤降至$25M（Q2为$414M），恰逢股价高位（约$105）；③资产负债表上$804M递延客户匹配奖励将在约4年内摊销为收入抵减项（本季$60M），是持续的收入"逆风"。</div>
+      </div>
+    </div>
+    <div class="footnote">Ex p.1, p.5; Deck p.23–24, p.37</div>
+  </div>
+</div>
+
+<!-- CASH FLOW -->
+<div class="section">
+  <div class="section-title collapsible closed" onclick="tg(this)">Cash Flow / 现金流量表</div>
+  <div class="collapse-content hide">
+    <table>
+      <tr><th>$M</th><th>Q3'25</th><th>Q3'26</th><th>9M'25</th><th>9M'26</th></tr>
+      <tr><td>Net income</td><td>556</td><td>476</td><td>1,278</td><td>1,395</td></tr>
+      <tr class="adj"><td>+ Non-cash items (D&A, SBC, credit losses, etc.)</td><td>131</td><td>328</td><td>383</td><td>540</td></tr>
+      <tr class="adj"><td>+ Changes in operating assets & liabilities（客户相关）</td><td>(2,263)</td><td>421</td><td>914</td><td>2,048</td></tr>
+      <tr class="subtotal"><td>Operating cash flow</td><td>(1,576)</td><td>1,225</td><td>2,575</td><td>3,983</td></tr>
+      <tr class="adj"><td>CapEx（设备+资本化软件）</td><td>(12)</td><td>(21)</td><td>(41)</td><td>(63)</td></tr>
+      <tr class="adj"><td>信用卡应收净购买（Credit Card Funding Trust）</td><td>(209)</td><td>(435)</td><td>(391)</td><td>(873)</td></tr>
+      <tr><td>Investing cash flow</td><td>(142)</td><td>(479)</td><td>699</td><td>(1,533)</td></tr>
+      <tr><td>Financing cash flow</td><td>(5)</td><td>353</td><td>(708)</td><td>2,439</td></tr>
+    </table>
+    <div class="note amber"><strong>为什么不用"自由现金流"：</strong>券商的经营现金流被客户隔离资金、证券借贷、融资应收等流动大幅扭曲（同一项目Q3'25为−$1.6B、Q3'26为+$1.2B），并不反映经营产出。对Robinhood而言，<strong>净利润、Adjusted EBITDA与公司现金余额（$6.0B）</strong>是更可靠的盈利与现金生成指标。资本开支极轻（季度约$21M），轻资产特征明显。</div>
+    <div class="footnote">Ex p.9 · 非现金项目与经营资产负债变动小计为本分析合并</div>
+  </div>
+</div>
+
+<!-- GUIDANCE -->
+<div class="section">
+  <div class="section-title">2026 Outlook / 全年费用指引</div>
+  <table>
+    <tr><th>指标</th><th>Q2时指引</th><th>当前指引</th><th>变化</th><th>YTD实际</th><th>隐含Q4</th></tr>
+    <tr><td><strong>Adjusted Opex and SBC</strong></td><td>$2.675–2.775B</td><td><strong>$2.675–2.75B</strong></td><td class="up">上限 −$25M（中值−$13M）</td><td>$1.912B</td><td class="down"><strong>$765–840M</strong></td></tr>
+  </table>
+  <div class="note amber">
+    <strong>这个指引比表面更值得推敲：</strong>标题是"下调费用上限"，但Q3实际Adj. Opex+SBC为$664M，隐含Q4为$765–840M，<strong>环比跳升15%–26%</strong>。公司解释是"继续为新老产品的增长投资"（HOOD Summit发布17款新品、迪拜扩张、永续合约、Agents）。若Q4收入未同步跃升，Q4利润率将明显承压。指引不含信用损失、待完成收购费用与重大监管事项。<br><br>
+    公司未提供收入指引（Robinhood历来不提供），<strong>一致预期中Q4数据未找到可靠来源</strong>。
+  </div>
+  <div class="footnote">Ex p.4, Deck p.18</div>
+</div>
+
+<!-- CONSENSUS -->
+<div class="section">
+  <div class="section-title">Actual vs. Consensus / 实际 vs 一致预期</div>
+  <table>
+    <tr><th>指标</th><th>实际</th><th>一致预期</th><th>差异</th><th>来源</th></tr>
+    <tr><td>Total Net Revenues</td><td>$1,424M</td><td>~$1,430M</td><td class="down">−0.4%（略低）</td><td>Bloomberg (via Yahoo)</td></tr>
+    <tr><td>Adjusted EBITDA</td><td>$808M</td><td>~$794M</td><td class="up">+1.8%</td><td>Web</td></tr>
+    <tr><td>EPS</td><td>Adj. $0.60 / GAAP $0.51</td><td>$0.55 / $0.57 / $0.64</td><td class="neutral">口径不一，无法定论</td><td>多个数据商</td></tr>
+  </table>
+  <div class="note red">
+    <strong>股价反应：</strong>10月27日收盘$94.56，盘后跌约7.4%至$87.60。低于公司Q3回购均价（约$105）。<br>
+    <strong>EPS"beat还是miss"取决于你用哪个口径</strong>：Adjusted EPS是本季新指标，分析师此前建模的多为GAAP EPS或旧口径。若以GAAP $0.51对比约$0.55–0.57，则为miss；若以Adjusted $0.60对比$0.55，则为beat。市场的反应（下跌）更接近前一种解读，叠加收入略低于预期、MAU下滑与Q4费用跳升。
+  </div>
+  <div class="footnote">来源: Web Search（Yahoo Finance / Bloomberg data, Investing.com, StockStory）· 共识数据日期为2026年10月27日前后</div>
+</div>
+
+<!-- SIGNALS -->
+<div class="section">
+  <div class="section-title">Management Signals / 管理层信号</div>
+  <div class="signal-grid">
+    <div class="signal-box signal-positive">
+      <h4 class="up">Positive / 积极信号</h4>
+      <li><strong>收入、Adj. EBITDA、ARPU、平台资产、Gold订阅全部创历史新高</strong></li>
+      <li><strong>业务多元化：14条年化$100M+业务线</strong>（2019年仅1条），本季新增Rothera、信用卡、Robinhood Legend</li>
+      <li><strong>Rothera</strong>（与Susquehanna合资的交易所）首个完整季度年化收入即超$100M，累计交易64亿份合约</li>
+      <li><strong>市场份额提升</strong>：股票、期权、预测市场交易量与融资余额均创纪录</li>
+      <li><strong>10月净存款月初至今已超$13B</strong>，Q4开局强劲</li>
+      <li><strong>Trump Accounts</strong>：财政部自动为约7000万儿童开户，2500万儿童获Dell家族$250注资——带来超长期托管资产与服务收入（本季$47M）；但App为白标产品、不显示Robinhood品牌，用户获取价值有限</li>
+      <li><strong>Robinhood Chain</strong>主网首季即进入链上收入/交易量前五，DEX交易量超$80B</li>
+      <li>G&A −12% YoY，核心费用率下降1.5pp，经营杠杆仍在</li>
+    </div>
+    <div class="signal-box signal-negative">
+      <h4 class="down">Risks / 风险信号</h4>
+      <li><strong>增长显著放缓</strong>：LTM收入增速从75%降至21%，Rule of 40从131%降至77%</li>
+      <li><strong>加密收入−55%</strong>，加密交易量−38%（App −48%），对加密周期的敏感度依然很高</li>
+      <li><strong>预测市场监管风险</strong>：事件合约已占收入12%，而公司明确披露州级执法可能迫使其停止提供</li>
+      <li><strong>MAU环比下降110万至13.0M</strong>，净存款年化增速17%为5季最低</li>
+      <li><strong>信用损失准备$71M（+173%）</strong>：信用卡账本快速扩张；按年化计约为信用卡净应收（$1.84B）的15%——CECL会前置计提，但需跟踪实际核销率</li>
+      <li><strong>Q4隐含费用跳升15–26%</strong>，可能压缩利润率</li>
+      <li><strong>证券借贷净收入转负</strong>，降息周期继续压制隔离现金与现金归集收益</li>
+      <li><strong>有效税率升至约24%</strong>，此前低税率红利消退，GAAP利润增速将持续低于税前增速</li>
+      <li>$768M未摊销客户匹配奖励将在约4年内持续抵减收入</li>
+    </div>
+  </div>
+</div>
+
+<!-- VALUATION -->
+<div class="section">
+  <div class="section-title">Valuation Snapshot / 估值快照</div>
+  <table>
+    <tr><th>指标</th><th>按收盘 $94.56</th><th>按盘后 $87.60</th><th>计算基础</th></tr>
+    <tr><td>Market Cap / 市值</td><td>~$85.2B</td><td>~$78.9B</td><td>A类793M + B类108M = 901M股 <span class="src">[Ex p.5]</span></td></tr>
+    <tr><td>Enterprise Value（估）</td><td>~$81.9B</td><td>~$75.6B</td><td>市值 − 公司现金等$6.0B + 长期借款$2.66B</td></tr>
+    <tr><td>P/E（LTM GAAP）</td><td>~43.6x</td><td>~40.4x</td><td>LTM摊薄EPS $2.17</td></tr>
+    <tr><td>P/E（年化Q3 Adj. EPS）</td><td>~39.4x</td><td>~36.5x</td><td>$0.60 × 4 = $2.40</td></tr>
+    <tr><td>P/S（LTM）</td><td>~16.8x</td><td>~15.5x</td><td>LTM收入 $5,082M</td></tr>
+    <tr><td>EV / Adj. EBITDA（LTM）</td><td>~28.8x</td><td>~26.6x</td><td>LTM Adj. EBITDA $2,844M</td></tr>
+  </table>
+  <div class="note amber">市场当前按约27–29倍LTM EV/EBITDA、约40倍GAAP P/E为Robinhood定价——这是给予<strong>高增长平台公司</strong>的估值，而本季LTM收入增速已降至21%。估值能否维持，取决于增长放缓是"加密周期性回落"还是"结构性见顶"。历史区间（1/5/10年均值）数据<strong>未在本文件中提供</strong>，不做比较。本节仅呈现市场定价事实，不构成投资建议。</div>
+  <div class="footnote">估值为本分析基于公开股价与公司披露数据估算</div>
+</div>
+
+<!-- OWNER LAYER -->
+<div class="owner-layer">
+  <div class="section-title">Owner Layer / 结构性资产视角</div>
+  <p style="font-size:13px;color:#aaa;margin-bottom:8px">季度数字显示"增长放缓、利润持平"。所有者视角要问的是：在加密退潮的这个季度，Robinhood积累了哪些<strong>不随交易热度消退</strong>的结构性资产？</p>
+  <div class="asset-grid">
+    <div class="asset-card">
+      <h4>🔄 Demand Capture / 投机需求的"接盘能力"</h4>
+      <p>本季最被低估的事实：<strong>加密收入少了$148M，事件合约多了$146M，期权多了$95M</strong>——同一批用户的风险偏好从一个品类迁移到另一个品类，Robinhood全部接住了。这说明Robinhood的护城河不在任何单一资产类别，而在于<strong>"活跃交易者想交易什么，它就能最快上线什么"</strong>的产品速度（Q3单季发布数十项功能）。只要散户的投机需求总量还在，它对品类周期的敏感度会持续下降。</p>
+      <span class="score">强 ★★★★</span>
+    </div>
+    <div class="asset-card">
+      <h4>🏛️ Vertical Integration / 交易所与清算垂直整合</h4>
+      <p><strong>Rothera</strong>（与Susquehanna合资）首季即年化$100M+，加上自有清算、Bitstamp交易所与Robinhood Chain，Robinhood正从"把订单交给别人执行的经纪商"变成"<strong>拥有交易场所本身</strong>"的平台。这改变了单位经济模型：在预测市场上，它可以同时赚取经纪与交易所两层费用。风险在于Rothera并非全资、且非Robinhood运营控制（公司已披露）。</p>
+      <span class="score">强（早期）★★★★</span>
+    </div>
+    <div class="asset-card">
+      <h4>👶 Policy-Driven Distribution / 政策驱动的分发渠道</h4>
+      <p><strong>Trump Accounts</strong>：财政部为约7000万儿童自动开户、Dell家族为2500万儿童各注资$250，Robinhood担任经纪商与初始受托人。本季已贡献$47M服务收入，10月带来$6B净存款，账户生命周期以数十年计。<strong>但需注意（2026-10-28修正）：</strong>Trump Accounts的App为<strong>白标产品，不显示Robinhood品牌，由财政部完全控制</strong>。因此它带来的是服务收入、托管资产与净存款，<strong>而非直接的品牌曝光或客户关系</strong>；这些账户未来能否转化为Robinhood品牌客户，仍有待验证。</p>
+      <span class="score">中强（收入与资产）★★★☆</span>
+    </div>
+    <div class="asset-card">
+      <h4>💳 Subscription & Wallet Share / 订阅与钱包份额</h4>
+      <p>Gold订阅5.2M（渗透率18%，新客户约40%）、Gold信用卡1.3M用户/年化支付量$19B、银行存款近$5B、Retirement AUC $36.6B（+51%）、Strategies AUM $2B+。这些产品的共同点是<strong>与交易活跃度弱相关</strong>：订阅费、信用卡利息、退休资产都不会因为加密熊市而消失。它们正在为Robinhood构建一个比交易收入更稳定的"底盘"。代价是信用损失准备快速上升，需要持续验证风控能力。</p>
+      <span class="score">强 ★★★★</span>
+    </div>
+    <div class="asset-card">
+      <h4>💰 Balance Sheet Deployment / 资产负债表调配能力</h4>
+      <p>生息资产$77B（+19%），保证金账本$22.1B（+59%）。2026年2月把$6B+低收益现金归集（0.59%）转为支持融资业务（4.54%）——这是<strong>主动的资产负债管理</strong>，而非被动吃利差。公司现金等$6.0B + $4.9B信贷额度 + $2.2B 0%可转债，提供了并购（WonderFi、TradePMR、迪拜扩张）与回购的弹药。但首次出现的$2.66B长期借款，意味着资本结构正在从"零负债"走向"适度杠杆"。</p>
+      <span class="score">中强 ★★★☆</span>
+    </div>
+    <div class="asset-card">
+      <h4>🎯 Strategic Optionality / 战略期权</h4>
+      <p>三张尚未定价的牌：<strong>①全球化</strong>——英国加密、迪拜DFSA全牌照（2027年推出）、欧盟股票代币与永续合约；<strong>②链上金融</strong>——Robinhood Chain首季即进入前五、股票代币化；<strong>③Agentic Trading</strong>——约20万用户开设AI代理交易账户、$1.6B交易量。每一项都处于早期，但它们共同指向同一个方向：Robinhood在把自己从"美国零售券商"重新定义为<strong>"全球化、链上化、AI化的金融操作系统"</strong>。</p>
+      <span class="score">高 ★★★★☆</span>
+    </div>
+  </div>
+  <div style="margin-top:18px;padding:16px 20px;background:rgba(204,255,0,.06);border-left:3px solid #CCFF00;border-radius:6px;font-size:13px;color:#ddd">
+    <strong style="color:#CCFF00">Owner Layer 总结：</strong>这个季度的"坏消息"（加密−55%、MAU下滑、GAAP利润−14%）大多是<strong>周期性或会计性</strong>的：加密周期、税率正常化、RVI市值波动。而"好消息"更多是<strong>结构性</strong>的：Rothera把它推向交易所层、Trump Accounts带来长期托管资产、Gold/信用卡/退休产品构建了与交易热度弱相关的收入底盘。<br><br>
+    需要警惕的结构性风险只有两个：<strong>①预测市场的监管命运</strong>（已占收入12%、且是最大增量来源）；<strong>②信用业务的风控</strong>（信用损失准备+173%）。这两项决定了Robinhood"新底盘"能否真正替代"旧引擎"。
+  </div>
+</div>
+
+<!-- SOURCE INDEX -->
+<div class="section">
+  <div class="section-title collapsible closed" onclick="tg(this)">Source Index / 数据溯源</div>
+  <div class="collapse-content hide">
+    <table style="font-size:12px">
+      <tr><th style="text-align:left">数据点</th><th style="text-align:left">来源</th></tr>
+      <tr><td>标题指标、收入拆分、管理层引语、10月净存款</td><td style="text-align:left">Exhibit 99.1 p.1</td></tr>
+      <tr><td>业务亮点（Rothera、Trump Accounts、Gold Card、Chain、DFSA）</td><td style="text-align:left">Exhibit 99.1 p.2</td></tr>
+      <tr><td>运营数据（交易量、Margin Book、Retirement AUC）</td><td style="text-align:left">Exhibit 99.1 p.3</td></tr>
+      <tr><td>2026费用指引</td><td style="text-align:left">Exhibit 99.1 p.4；Deck p.18</td></tr>
+      <tr><td>资产负债表</td><td style="text-align:left">Exhibit 99.1 p.5</td></tr>
+      <tr><td>利润表（季度/9个月）、费用率、SBC明细</td><td style="text-align:left">Exhibit 99.1 p.6–8</td></tr>
+      <tr><td>现金流量表</td><td style="text-align:left">Exhibit 99.1 p.9–10</td></tr>
+      <tr><td>Adj. EBITDA / Adj. Opex / Adj. NI & EPS 调节</td><td style="text-align:left">Exhibit 99.1 p.11–13</td></tr>
+      <tr><td>5季度KPI（客户、Gold、平台资产、净存款）</td><td style="text-align:left">Deck p.3</td></tr>
+      <tr><td>9季度收入与交易收入拆分</td><td style="text-align:left">Deck p.13–14</td></tr>
+      <tr><td>净利息收入拆分、生息资产与收益率</td><td style="text-align:left">Deck p.15, p.39</td></tr>
+      <tr><td>14条$100M+业务线</td><td style="text-align:left">Deck p.16</td></tr>
+      <tr><td>Rule of 40</td><td style="text-align:left">Deck p.22</td></tr>
+      <tr><td>公司现金、可转债、信贷额度</td><td style="text-align:left">Deck p.23</td></tr>
+      <tr><td>回购与摊薄股本</td><td style="text-align:left">Deck p.24</td></tr>
+      <tr><td>MAU</td><td style="text-align:left">Deck p.35</td></tr>
+      <tr><td>客户匹配奖励摊销</td><td style="text-align:left">Deck p.37</td></tr>
+      <tr><td>证券借贷收入</td><td style="text-align:left">Deck p.41</td></tr>
+      <tr><td>一致预期、股价反应</td><td style="text-align:left">Web Search — Yahoo Finance (Bloomberg data), Investing.com, StockStory</td></tr>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<div style="text-align:center;padding:20px;color:#888;font-size:11px">
+  本分析仅基于公开信息，不构成投资建议。财务数据未经审计，请以公司正式SEC文件为准。<br>
+  Generated by Wall Street Financial Analyst Skill · 2026年10月28日
+</div>
+
+<script>
+function tg(el){el.classList.toggle('closed');el.nextElementSibling.classList.toggle('hide')}
+(function(){
+  const q=["Q3'24","Q4'24","Q1'25","Q2'25","Q3'25","Q4'25","Q1'26","Q2'26","Q3'26"];
+  const tx=[319,672,583,539,730,776,623,776,867], ni=[274,296,290,357,456,411,359,389,415], ot=[44,46,54,93,88,96,85,143,142];
+  const g=document.getElementById('bars'), s=0.156, base=270, w=50, gap=25, x0=80;
+  const ns='http://www.w3.org/2000/svg';
+  function r(x,y,h,c){const e=document.createElementNS(ns,'rect');e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('width',w);e.setAttribute('height',h);e.setAttribute('fill',c);g.appendChild(e);}
+  function t(x,y,s,a){const e=document.createElementNS(ns,'text');e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('text-anchor','middle');for(const k in a)e.setAttribute(k,a[k]);e.textContent=s;g.appendChild(e);}
+  q.forEach((lab,i)=>{
+    const x=x0+i*(w+gap), last=i===q.length-1;
+    let y=base; const h1=tx[i]*s; y-=h1; r(x,y,h1,last?'#CCFF00':'#9acc00');
+    const h2=ni[i]*s; y-=h2; r(x,y,h2,'#bdbdb4');
+    const h3=ot[i]*s; y-=h3; r(x,y,h3,'#555');
+    const tot=tx[i]+ni[i]+ot[i];
+    t(x+w/2,y-5,'$'+tot.toLocaleString(),{'font-size':last?'12':'10','font-weight':last?'700':'400',fill:'#222'});
+    t(x+w/2,288,lab,{'font-size':'10',fill:last?'#111':'#777','font-weight':last?'700':'400'});
+  });
+})();
+</script>
+</body>
+</html>
