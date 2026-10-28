@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinhood 加密数据 vs 比特币：联动分析与前瞻情景</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f2;color:#333;font-size:14px;line-height:1.6}
+.header{background:#0b0b0b;color:#fff;padding:30px 40px;border-bottom:5px solid #f7931a}
+.header h1{font-size:26px;font-weight:700}
+.header h1 span{color:#f7931a}
+.header .sub{font-size:14px;opacity:.8;margin-top:4px}
+.container{max-width:1240px;margin:0 auto;padding:20px}
+.section{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:20px;padding:24px}
+.section-title{font-size:18px;font-weight:700;color:#111;border-bottom:3px solid #f7931a;padding-bottom:8px;margin-bottom:16px}
+.answer{background:#111;color:#eee;border-radius:10px;padding:22px 26px;margin-bottom:20px}
+.answer h2{color:#f7931a;font-size:17px;margin-bottom:10px}
+.answer li{list-style:none;padding-left:22px;position:relative;margin-bottom:9px;font-size:14px}
+.answer li b{color:#fff}
+.answer li:before{content:"→";position:absolute;left:0;color:#CCFF00;font-weight:700}
+.note{margin-top:12px;padding:14px 18px;border-radius:8px;font-size:13px}
+.note.amber{background:#fff8e1;color:#5c4400}.note.green{background:#f1f8e6}.note.red{background:#fdecea;color:#7f1d1d}.note.blue{background:#eef3fb;color:#1f3557}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th{background:#111;color:#fff;padding:9px 11px;text-align:right;font-weight:600}
+th:first-child{text-align:left}
+td{padding:8px 11px;text-align:right;border-bottom:1px solid #eee}
+td:first-child{text-align:left;font-weight:500}
+tr.hl{background:#fff4e5}
+tr.total{background:#f3f3ee;font-weight:700}
+.up{color:#0a8a2e}.down{color:#cc3333}.neutral{color:#666}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.grid3,.grid2{grid-template-columns:1fr}}
+.stat{background:#fafaf6;border:1px solid #e6e6dc;border-radius:10px;padding:16px;text-align:center}
+.stat .v{font-size:26px;font-weight:700;color:#111}
+.stat .l{font-size:12px;color:#666}
+.stat .s{font-size:12px;margin-top:4px}
+.chart{text-align:center;margin:8px 0}
+.footnote{font-size:11px;color:#888;margin-top:8px}
+.src{font-size:10px;color:#c26a00;vertical-align:super}
+.scen{border-radius:10px;padding:16px;border:2px solid}
+.scen h4{font-size:15px;margin-bottom:6px}
+.scen .rev{font-size:26px;font-weight:700;margin:6px 0}
+.scen p{font-size:12.5px;color:#444}
+.bear{border-color:#e57373;background:#fef6f6}.base{border-color:#9e9e9e;background:#f7f7f4}.bull{border-color:#7cb342;background:#f4faee}
+.pill{display:inline-block;padding:2px 9px;border-radius:10px;font-size:11px;font-weight:700}
+.pill.g{background:#e3f4d4;color:#2e6b0a}.pill.r{background:#fbdcdc;color:#8b1a1a}.pill.y{background:#fff1c9;color:#7a5a00}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>₿</span> Robinhood 加密数据 vs 比特币价格：联动拆解与前瞻情景</h1>
+  <div class="sub">Linkage & Forecast Analysis · 基于 Robinhood Q3 2026 披露（季度+月度）与 BTC 价格路径 · 2026年10月28日</div>
+</div>
+
+<div class="container">
+
+<!-- DIRECT ANSWER -->
+<div class="answer">
+  <h2>结论先行 / Bottom Line</h2>
+  <ul>
+    <li><b>先纠正前提：BTC在Q3并不平稳，而是上涨约43%</b>（从7月1日周期低点约$58.5K升至季末约$83.5K，为2017年以来最强第三季度）。7月到8月中旬确实横盘，涨幅集中在8月下旬。但<b>同比看，BTC季末价格仍低约27%</b>（去年同期约$114K）。</li>
+    <li><b>两者有联动，但只能解释约一半的下滑。</b>将$268M→$120M拆开：<b>约$81M来自BTC价格水平下降</b>；约$38M来自<b>超出价格因素的散户流失</b>；约$41M来自<b>Robinhood自身费率压缩</b>（App端从约63bps降至43bps）；Bitstamp −$14M；新增Robinhood Chain +$26M。</li>
+    <li><b>最重要的信号是环比背离：</b>BTC +43%，但App加密交易量仅+13%、交易人数−12%、App加密收入−6%。<b>价格涨了，散户没回来。</b>这轮反弹由机构和ETF驱动（Bitstamp机构量+34%，零售量仅+7%）。</li>
+    <li><b>是"更不活跃"还是"熊市"？</b>价格意义上的熊市<b>已经发生过了</b>（2025年10月高点至2026年7月低点下跌约53%）。Robinhood数据清楚表明<b>散户参与度处于周期低位</b>，但它<b>不能预测价格是否再创新低</b>。上一轮周期中，Robinhood加密收入<b>在价格见底后约3个季度才见底</b>，散户在底部是滞后指标。</li>
+    <li><b>前瞻（Q4'26 Robinhood加密收入）：</b>BTC重新探底情景约<b>$100M</b> · 区间震荡情景约<b>$125–140M</b> · 有效反弹情景约<b>$200M</b>。若历史类比成立，<b>剔除Chain后的加密收入可能在2027年上半年前后才见底</b>，而不是跟随价格同步回升。</li>
+  </ul>
+</div>
+
+<!-- PREMISE CHECK -->
+<div class="section">
+  <div class="section-title">① Premise Check / BTC在Q3到底走了什么路径？</div>
+  <div class="grid3">
+    <div class="stat"><div class="l">BTC Q3'26 季度涨幅</div><div class="v up">+42.6%</div><div class="s">$58.5K → ~$83.5K</div></div>
+    <div class="stat"><div class="l">BTC 季末价格同比</div><div class="v down">−27%</div><div class="s">Q3'25末 ~$114K</div></div>
+    <div class="stat"><div class="l">距2025年10月高点（~$126K）</div><div class="v down">−36%</div><div class="s">10月26日约$79.3K</div></div>
+  </div>
+  <div class="chart"><svg id="c1" viewBox="0 0 900 330" style="max-width:900px;width:100%"></svg></div>
+  <div class="footnote">柱状 = Robinhood App 月度加密名义交易额（$B，Deck p.26/28）；折线 = BTC月末价格（近似值：以季末收盘$87,498 / ~$66,650 / $58,524 / ~$83,450为锚点，结合聚合平台的月度回报重建，误差约±3%）<span class="src">[Web]</span></div>
+  <div class="note blue">
+    <b>你观察到的"平稳"其实发生在Q3前半段：</b>7月BTC只涨约7%，App加密交易额跌至<b>$4.3B，为14个月数据中的最低点</b>，加密日均交易人数降到0.6M，也是最低。8月21日前后的突破之后，9月App交易额回升至$8.9B（+22%环比），但<b>仍低于去年9月的$9.3B</b>，而且后者对应的BTC价格要高出约37%。
+  </div>
+</div>
+
+<!-- LINKAGE -->
+<div class="section">
+  <div class="section-title">② Linkage / 价格与散户交易的关系有多强？</div>
+  <div class="grid3">
+    <div class="stat"><div class="l">价格水平 vs App交易额（14个月，对数）</div><div class="v">r = 0.76</div><div class="s">弹性 ≈ 1.27：BTC每跌10%，App交易额约跌12–13%</div></div>
+    <div class="stat"><div class="l">月度涨跌幅 vs 月度交易额变化</div><div class="v">r = 0.07</div><div class="s">逐月涨跌几乎无法解释逐月交易额</div></div>
+    <div class="stat"><div class="l">Q3 环比实现弹性</div><div class="v down">0.33</div><div class="s">BTC +43% 只换来 App交易额 +13%</div></div>
+  </div>
+  <div class="note green">
+    <b>怎么读：</b>散户交易额跟随的是<b>价格水平</b>（以及背后的财富效应与关注度），而不是短期涨跌。用1.27的弹性推算，BTC同比下跌27%，对应App交易额应下降约33%；<b>实际下降了48%</b>。多出来的约15个百分点，是价格解释不了的<b>参与度流失</b>。Q3的环比弹性只有0.33，远低于14个月的平均水平1.27，说明这轮反弹<b>没有带动散户</b>。
+  </div>
+
+  <h4 style="margin:18px 0 6px">Revenue Bridge / 加密收入同比拆解：$268M → $120M</h4>
+  <div class="chart"><svg id="c2" viewBox="0 0 900 300" style="max-width:900px;width:100%"></svg></div>
+  <table>
+    <tr><th>驱动因素</th><th>影响 ($M)</th><th>占总下滑比例*</th><th style="text-align:left">计算方法</th></tr>
+    <tr><td>BTC价格水平下降</td><td class="down">−81</td><td>47%</td><td style="text-align:left">预测交易额 = Q3'25交易额 × (0.73)^1.27 → $26.6B；(26.6 − 39.6) × 去年费率</td></tr>
+    <tr class="hl"><td>超出价格因素的散户流失</td><td class="down">−38</td><td>22%</td><td style="text-align:left">(实际$20.6B − 预测$26.6B) × 去年费率</td></tr>
+    <tr class="hl"><td>App费率压缩（~63 → 43 bps）</td><td class="down">−41</td><td>24%</td><td style="text-align:left">$20.6B × (费率变化)</td></tr>
+    <tr><td>Bitstamp收入</td><td class="down">−14</td><td>8%</td><td style="text-align:left">~$20M（估）→ $6M</td></tr>
+    <tr><td>Robinhood Chain（新增）</td><td class="up">+26</td><td>—</td><td style="text-align:left">Q3首次计入加密收入</td></tr>
+    <tr class="total"><td>合计</td><td>−148</td><td>100%</td><td style="text-align:left">$268M → $120M（−55%）</td></tr>
+  </table>
+  <div class="footnote">* 占总下滑比例的分母为未计Chain抵消前的总下滑$174M。Q3'25 App与Bitstamp的收入拆分未披露，按Bitstamp约$20M估算（若取$15–25M，App费率区间为61–64bps，结论不变）。Q3'25交易额由Ex p.3的同比降幅反推：App ≈ $39.6B，Bitstamp ≈ $40.6B。</div>
+</div>
+
+<!-- DIVERGENCE -->
+<div class="section">
+  <div class="section-title">③ The Divergence / 价格涨了，散户为什么没回来？</div>
+  <table>
+    <tr><th>Q3'26 指标</th><th>同比</th><th>环比</th><th style="text-align:left">含义</th></tr>
+    <tr><td>BTC价格（季末）</td><td class="down">−27%</td><td class="up">+43%</td><td style="text-align:left">价格已明显反弹</td></tr>
+    <tr class="hl"><td>App加密<b>交易人数</b></td><td class="down">−37%</td><td class="down">−12%</td><td style="text-align:left"><b>参与广度仍在萎缩</b></td></tr>
+    <tr><td>App人均名义交易额</td><td class="down">−13%</td><td class="up">+26%</td><td style="text-align:left">留下的人交易得更多</td></tr>
+    <tr><td>App加密交易额</td><td class="down">−48%</td><td class="up">+13%</td><td style="text-align:left">总量回升幅度远小于价格</td></tr>
+    <tr><td>App加密收入</td><td class="down">−65%（估）</td><td class="down">−6%</td><td style="text-align:left">费率压缩抵消了交易量增长</td></tr>
+    <tr><td>Bitstamp <b>机构</b>交易额</td><td>—</td><td class="up">+34%</td><td style="text-align:left">机构是本轮反弹的主力</td></tr>
+    <tr><td>Bitstamp 零售交易额</td><td>—</td><td class="up">+7%</td><td style="text-align:left">零售基本没动</td></tr>
+    <tr><td>Bitstamp交易人数</td><td class="down">−68%</td><td class="down">−16%</td><td style="text-align:left">集中度急剧上升</td></tr>
+    <tr><td>平台月活（MAU，全平台）</td><td class="down">−0.8M</td><td class="down">−1.1M</td><td style="text-align:left">整体关注度下降</td></tr>
+  </table>
+  <div class="footnote">来源：Deck p.31（交易人数/人均交易额）、p.33（场所拆分）、p.35（MAU）；Ex p.3；BTC价格 [Web]</div>
+
+  <div class="grid2" style="margin-top:14px">
+    <div>
+      <h4 style="margin-bottom:6px">原因一：投机资金转向预测市场</h4>
+      <div class="chart"><svg id="c3" viewBox="0 0 440 240" style="max-width:440px;width:100%"></svg></div>
+      <div class="note amber" style="margin-top:4px">事件合约收入在Q1'26已接近加密收入（$104M vs $134M），<b>Q2'26实现反超</b>（$156M vs $100M）。上一轮周期中，散户的"高风险高回报"需求只能去加密，现在多了一个出口（预测市场成交量7倍增长）。这意味着<b>即使BTC回升，Robinhood加密交易的修复也可能弱于以往周期</b>，因为一部分注意力和资金已经被预测市场吸走。</div>
+    </div>
+    <div>
+      <h4 style="margin-bottom:6px">原因二：Robinhood加密费率持续下降</h4>
+      <div class="chart"><svg id="c4" viewBox="0 0 440 240" style="max-width:440px;width:100%"></svg></div>
+      <div class="note amber" style="margin-top:4px">App端每$1交易额对应的收入从约63bps（Q3'25，估）降至43bps。人均交易额+26%环比，说明<b>交易越来越集中在大户手中</b>，而大户适用更低的阶梯费率；公司也在风险提示中提到了"新的加密收费模式"。<b>这是Robinhood自身的因素，不反映加密市场整体</b>，但它意味着收入的恢复速度会慢于交易量。</div>
+    </div>
+  </div>
+</div>
+
+<!-- CYCLE ANALOG -->
+<div class="section">
+  <div class="section-title">④ Cycle Analog / 上一轮周期给了什么启示？</div>
+  <div class="chart"><svg id="c5" viewBox="0 0 900 290" style="max-width:900px;width:100%"></svg></div>
+  <table>
+    <tr><th>周期节点</th><th>周期1（2021–2024）</th><th>周期2（2024–至今）</th></tr>
+    <tr><td>Robinhood加密收入<b>峰值</b></td><td>Q2'21：$233M（狗狗币热潮）</td><td>Q4'24：$358M（美国大选行情）</td></tr>
+    <tr><td>BTC价格<b>峰值</b></td><td>2021年11月 ~$69K（收入$48M）</td><td>2025年10月 ~$126K（Q4'25收入$221M）</td></tr>
+    <tr class="hl"><td>收入峰值<b>领先</b>价格峰值</td><td><b>约2个季度</b></td><td><b>约4个季度</b></td></tr>
+    <tr><td>BTC价格<b>低点</b></td><td>2022年11月 ~$15.5K（约−77%）</td><td>2026年7月1日 ~$58.5K（约−53%）</td></tr>
+    <tr><td>Robinhood加密收入<b>低点</b></td><td>Q3'23：$23M（峰值以来−90%）</td><td>尚未确认：Q3'26剔除Chain为$94M（峰值以来−74%）</td></tr>
+    <tr class="hl"><td>收入低点<b>滞后</b>价格低点</td><td><b>约3个季度</b>（期间BTC已从低点上涨约70%）</td><td>若类比成立 → <b>2027年Q1–Q2前后</b></td></tr>
+  </table>
+  <div class="footnote">周期2数据来自Deck p.14；周期1的Q3'23 $23M已通过Robinhood SEC 8-K核实，其余周期1季度数据来自Robinhood历史财报（不在本次案例文件中）；BTC历史价格为近似值。</div>
+  <div class="note blue">
+    <b>两条规律（样本只有两个周期，需谨慎）：</b><br>
+    ① <b>在顶部，散户是领先指标：</b>Robinhood加密收入的高点比BTC价格高点早2–4个季度出现，因为散户的狂热往往先于价格见顶而耗尽。目前散户热度处于周期低位，<b>历史上出现在价格顶部之前的"散户狂热"信号，现在完全不存在</b>。<br>
+    ② <b>在底部，散户是滞后指标：</b>2023年上半年BTC上涨约80%，Robinhood加密收入却继续下滑，直到2024年ETF获批、价格进入新高区域，散户才回来。<b>本季度"BTC +43%、App加密收入−6%"的组合，和2023年上半年的模式高度相似。</b>
+  </div>
+</div>
+
+<!-- FORECAST -->
+<div class="section">
+  <div class="section-title">⑤ Forecast / Q4'26 Robinhood加密收入情景</div>
+  <div class="grid3">
+    <div class="scen bear">
+      <h4>🐻 重新探底 / Bear Retest</h4>
+      <div class="l" style="font-size:12px;color:#888">BTC季度均价 ~$62K（回到周期低点附近）</div>
+      <div class="rev down">~$100M</div>
+      <p>App月均交易额约$6B（接近Q2水平），费率维持约42bps；Chain约$22M；Bitstamp约$4M。<b>触发条件：</b>ETF持续流出、美联储加息预期升温，BTC跌破$58.5K的周期低点。</p>
+    </div>
+    <div class="scen base">
+      <h4>↔️ 区间震荡 / Range (基准)</h4>
+      <div class="l" style="font-size:12px;color:#888">BTC季度均价 ~$75–85K</div>
+      <div class="rev" style="color:#444">~$125–140M</div>
+      <p>App月均交易额$7.5–8.5B（与9月水平相近），费率约42–43bps；Chain约$27M。<b>与10月迄今的走势最吻合：</b>10月2日在约$87K受阻，10月26日回落至约$79K。</p>
+    </div>
+    <div class="scen bull">
+      <h4>🚀 有效反弹 / Recovery</h4>
+      <div class="l" style="font-size:12px;color:#888">BTC季度均价 ~$100K+</div>
+      <div class="rev up">~$200M</div>
+      <p>App月均交易额约$12B（回到2025年10–11月水平），费率小幅回升至约46bps；Chain约$32M。<b>前提：</b>散户真正回流，交易人数回升；这需要价格突破带来的强动量。</p>
+    </div>
+  </div>
+  <table style="margin-top:14px">
+    <tr><th>模型输入</th><th>Bear</th><th>Range</th><th>Recovery</th><th style="text-align:left">依据</th></tr>
+    <tr><td>BTC季度均价</td><td>$62K</td><td>$80K</td><td>$105K</td><td style="text-align:left">情景假设，非价格预测</td></tr>
+    <tr><td>App月均交易额</td><td>$6.1B</td><td>$8.4B</td><td>$11.9B</td><td style="text-align:left">以9月$8.9B / BTC $83.5K为基准 × (价格比)^1.27</td></tr>
+    <tr><td>App季度交易额</td><td>$18.3B</td><td>$25.3B</td><td>$35.7B</td><td style="text-align:left">月均 × 3</td></tr>
+    <tr><td>App费率</td><td>42 bps</td><td>43 bps</td><td>46 bps</td><td style="text-align:left">Q3实际42.7bps；反弹时散户占比回升、费率小幅改善</td></tr>
+    <tr><td>Bitstamp收入</td><td>$4M</td><td>$6M</td><td>$8M</td><td style="text-align:left">约2bps × 交易额</td></tr>
+    <tr><td>Robinhood Chain</td><td>$22M</td><td>$27M</td><td>$32M</td><td style="text-align:left">Q3为$26M（主网首季）</td></tr>
+    <tr class="total"><td>Q4'26 加密收入</td><td>~$103M</td><td>~$141M</td><td>~$205M</td><td style="text-align:left">对比：Q3'26 $120M，Q4'25 $221M</td></tr>
+  </table>
+  <div class="note amber">
+    <b>基准情景为何取$125–140M的区间，而不是模型给出的$141M：</b>14个月的价格弹性（1.27）是在散户正常参与时测得的；而Q3的实现弹性只有0.33。如果"散户滞后于价格"的规律持续，同样的BTC价格对应的交易额会低于模型值，因此把基准下沿下调到约$125M。<b>Robinhood Chain是唯一与BTC价格弱相关的增量</b>，它在三种情景中都托底了约$22–32M。
+  </div>
+  <div class="note red">
+    <b>这些情景能说明什么、不能说明什么：</b>它们回答的是"如果BTC走到某个区间，Robinhood加密收入大概是多少"，<b>而不是预测BTC会走到哪里</b>。Robinhood的散户数据在底部是滞后指标，不具备预测价格方向的能力。以上不构成任何投资建议。
+  </div>
+</div>
+
+<!-- WHAT IT IMPLIES -->
+<div class="section">
+  <div class="section-title">⑥ Implications / 对加密市场意味着什么："更不活跃"还是"熊市"？</div>
+  <div class="grid2">
+    <div class="note green" style="margin:0">
+      <b>✅ 数据支持的判断</b><br><br>
+      • <b>散户参与度处于周期低位：</b>7月加密日均交易人数0.6M、App交易额$4.3B，都是14个月数据中的最低点；交易人数同比−37%。<br><br>
+      • <b>本轮反弹由机构主导、缺乏散户确认：</b>ETF在Q3净流入约$6–7B，Bitstamp机构量+34%，而零售量+7%、App交易人数−12%。<br><br>
+      • <b>"散户狂热型顶部"的信号并不存在：</b>按历史规律，价格顶部之前通常会先出现Robinhood加密收入的高峰。目前没有这种迹象。<br><br>
+      • <b>散户投机需求没有消失，而是迁移了：</b>事件合约7倍增长、期权交易量创新高。散户冒险意愿仍在，只是没有投向加密。
+    </div>
+    <div class="note red" style="margin:0">
+      <b>⚠️ 数据无法回答 / 风险</b><br><br>
+      • <b>价格是否再创新低：</b>Robinhood数据在底部是滞后指标，不能用来判断$58.5K的低点是否守得住。<br><br>
+      • <b>缺乏散户支撑的反弹更脆弱：</b>如果ETF流向反转（10月已出现流出），在散户还没回来的情况下，价格缺少第二层买盘。10月在约$87K受阻，叠加约$10亿多头爆仓与加息预期升温，就是这种脆弱性的体现。<br><br>
+      • <b>结构性分流的长期影响：</b>如果预测市场持续吸走投机资金，下一轮加密牛市中散户的参与度可能整体低于以往。<br><br>
+      • <b>样本局限：</b>Robinhood只是一个平台，偏向美国散户；周期类比只有两个样本。
+    </div>
+  </div>
+  <div class="note blue">
+    <b>综合判断：</b>更准确的描述是<b>"熊市之后、散户缺席的修复期"</b>，而不是"正在进入熊市"。价格层面的熊市（−53%）已经发生；Q3是机构主导的第一次有效反弹，但散户尚未确认。在上一轮周期中，这个阶段持续了约3个季度，期间价格可以上涨，而散户相关的收入继续低迷。两种结局都有可能：①散户最终回流、修复期结束；②机构资金撤退、价格回测低点。下面的指标可以帮助区分这两种情况。
+  </div>
+</div>
+
+<!-- WATCHLIST -->
+<div class="section">
+  <div class="section-title">⑦ Leading Indicators / 跟踪清单：如何判断哪种情景正在展开</div>
+  <table>
+    <tr><th>指标</th><th>当前值</th><th>转向乐观 <span class="pill g">回流</span></th><th>转向悲观 <span class="pill r">恶化</span></th><th style="text-align:left">数据来源 / 时间</th></tr>
+    <tr><td>Robinhood月度加密日均交易人数</td><td>0.9M（9月）</td><td>&gt;1.0M，连续2个月</td><td>&lt;0.7M</td><td style="text-align:left">Robinhood月度指标，约11月中旬发布10月数据</td></tr>
+    <tr><td>App月度加密交易额</td><td>$8.9B（9月）</td><td>&gt;$12B</td><td>&lt;$6B</td><td style="text-align:left">同上</td></tr>
+    <tr><td>App交易额对价格的实现弹性</td><td>0.33（Q3）</td><td>&gt;1.0</td><td>价格上涨但交易额下降</td><td style="text-align:left">月度交易额与BTC价格对比</td></tr>
+    <tr><td>Bitstamp零售 / 机构交易额</td><td>$1.5B / $27.7B</td><td>零售增速超过机构</td><td>机构量回落</td><td style="text-align:left">Robinhood季度披露</td></tr>
+    <tr><td>事件合约收入 ÷ 加密收入</td><td>1.44x（$173M/$120M）</td><td>比值回落（资金回流加密）</td><td>比值继续上升</td><td style="text-align:left">Robinhood季度披露</td></tr>
+    <tr><td>Coinbase消费者交易收入</td><td>一致预期约$434M（−48.5%同比）</td><td>好于预期且环比回升</td><td>继续下滑</td><td style="text-align:left"><b>Coinbase Q3财报，10月29日</b>（可交叉验证）</td></tr>
+    <tr><td>BTC价格关键位置（观察值，非目标价）</td><td>~$80.8K（10/28）</td><td>突破10月2日~$87K高点并站稳</td><td>回测7月1日~$58.5K周期低点</td><td style="text-align:left">市场数据</td></tr>
+    <tr><td>BTC现货ETF资金流</td><td>Q3净流入约$6–7B；10月转为流出</td><td>恢复持续净流入</td><td>流出持续</td><td style="text-align:left">ETF发行方每日数据</td></tr>
+  </table>
+  <div class="footnote">阈值为本分析基于Robinhood 14个月数据区间设定的经验参考值，并非公司指引。</div>
+</div>
+
+<!-- CAVEATS & SOURCES -->
+<div class="section">
+  <div class="section-title">⑧ Caveats & Sources / 局限与数据来源</div>
+  <div class="note amber" style="margin-top:0">
+    • <b>BTC月度价格为重建的近似值</b>（不同聚合平台的月度回报相差数个百分点）；季末锚点相对可靠。<br>
+    • <b>Q3'25的App与Bitstamp收入拆分未披露</b>，费率与收入拆解中涉及该季度的部分为估算（敏感性区间已标注）。<br>
+    • <b>弹性模型只用了14个月数据</b>，期间包含Bitstamp并表、WonderFi并入（2026年6月起）等口径变化。<br>
+    • <b>"加密"是一篮子资产</b>，不只有BTC；山寨币通常跌幅更大，会放大交易额对BTC价格的弹性。<br>
+    • <b>周期类比只有两个样本</b>，只能作为参考框架，不能作为预测依据。<br>
+    • 本分析仅陈述数据与情景，不构成投资建议。
+  </div>
+  <table style="font-size:12px">
+    <tr><th style="text-align:left">数据</th><th style="text-align:left">来源</th></tr>
+    <tr><td>Robinhood季度加密收入（9个季度）</td><td style="text-align:left">Q3 2026 Earnings Presentation p.14</td></tr>
+    <tr><td>App / Bitstamp交易额与收入、机构/零售拆分（4个季度）</td><td style="text-align:left">Deck p.33</td></tr>
+    <tr><td>月度加密交易额、日均交易人数（14个月）</td><td style="text-align:left">Deck p.26, p.28</td></tr>
+    <tr><td>交易人数与人均交易额的同比/环比</td><td style="text-align:left">Deck p.31</td></tr>
+    <tr><td>同比交易额降幅、事件合约、MAU</td><td style="text-align:left">Exhibit 99.1 p.1, p.3；Deck p.35</td></tr>
+    <tr><td>BTC Q3涨幅、价格路径、ETF流向</td><td style="text-align:left"><a href="https://www.marketvector.com/insights/mvis-insights/quarterly-digital-assets-review-q3-2026">MarketVector</a>、<a href="https://stoic.ai/blog/crypto-market-update-q3-2026/">Stoic AI</a>、<a href="https://www.tradingview.com/news/cryptobriefing:6c750f1d4094b:0-bitcoin-jumps-42-9-in-q3-2026-leaving-gold-and-stocks-behind/">Crypto Briefing</a></td></tr>
+    <tr><td>BTC季末价格、月度回报</td><td style="text-align:left"><a href="https://www.kucoin.com/news/insight/BTC/6ac6b34838a2640007930e47">KuCoin</a>、<a href="https://msbintel.com/data/returns/bitcoin/">MSB Intel</a>、<a href="https://247wallst.com/investing/cryptocurrency/2026/09/19/bitcoin-is-11-days-from-its-first-winning-quarter-in-a-year-what-needs-to-hold-until-september-30/">24/7 Wall St.</a></td></tr>
+    <tr><td>BTC 10月走势、回撤</td><td style="text-align:left"><a href="https://www.tradingview.com/news/cryptobriefing:afbfca754094b:0-bitcoin-sits-32-below-its-126-000-record-one-year-later/">TradingView</a>、<a href="https://bitsgap.com/blog/is-uptober-over-bitcoin-is-36-off-its-high-in-october-2026">Bitsgap</a></td></tr>
+    <tr><td>Robinhood Q3'23加密收入$23M</td><td style="text-align:left"><a href="https://www.sec.gov/Archives/edgar/data/1783879/000178387923000267/q32023robinhoodexhibit991.htm">SEC 8-K (Nov 2023)</a></td></tr>
+    <tr><td>Coinbase Q3一致预期</td><td style="text-align:left"><a href="https://247wallst.com/investing/2026/10/25/coinbase-q3-earnings-preview-can-cryptos-rebound-save-coin-from-a-fourth-consecutive-miss-oct-29/">24/7 Wall St.</a></td></tr>
+  </table>
+</div>
+
+</div>
+<div style="text-align:center;padding:18px;color:#888;font-size:11px">本分析仅基于公开信息，不构成投资建议 · Generated by Wall Street Financial Analyst Skill · 2026年10月28日</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(svg,tag,attrs,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!==undefined)e.textContent=text;svg.appendChild(e);return e;}
+
+// Chart 1: monthly App volume (bars) vs BTC price (line)
+(function(){
+  const s=document.getElementById('c1');
+  const m=["Aug-25","Sep-25","Oct-25","Nov-25","Dec-25","Jan-26","Feb-26","Mar-26","Apr-26","May-26","Jun-26","Jul-26","Aug-26","Sep-26"];
+  const app=[13.7,9.3,13.9,12.0,8.1,8.7,9.4,5.7,5.4,5.9,6.9,4.3,7.4,8.9];
+  const btc=[108.2,114.1,109.6,90.4,87.5,78.6,66.9,66.7,74.5,71.8,58.5,62.8,78.6,83.5];
+  const L=60,R=840,T=30,B=270,n=m.length,step=(R-L)/n,bw=step*0.55;
+  el(s,'line',{x1:L,y1:B,x2:R,y2:B,stroke:'#ccc'});
+  [0,5,10,15].forEach(v=>{const y=B-v/15*(B-T);el(s,'text',{x:L-6,y:y+4,'font-size':10,fill:'#888','text-anchor':'end'},'$'+v+'B');el(s,'line',{x1:L,y1:y,x2:R,y2:y,stroke:'#f2f2f2'});});
+  [40,80,120].forEach(v=>{const y=B-(v-40)/80*(B-T);el(s,'text',{x:R+6,y:y+4,'font-size':10,fill:'#c26a00'},'$'+v+'K');});
+  // Q3 shading
+  el(s,'rect',{x:L+11*step,y:T-10,width:3*step,height:B-T+10,fill:'#f7931a',opacity:0.08});
+  el(s,'text',{x:L+12.5*step,y:T-14,'font-size':11,fill:'#c26a00','text-anchor':'middle','font-weight':700},'Q3 2026');
+  let pts=[];
+  m.forEach((lab,i)=>{
+    const x=L+i*step+(step-bw)/2,h=app[i]/15*(B-T);
+    el(s,'rect',{x:x,y:B-h,width:bw,height:h,fill:i>=11?'#CCFF00':'#9acc00',stroke:i>=11?'#7a9900':'none'});
+    el(s,'text',{x:x+bw/2,y:B-h-4,'font-size':9,fill:'#333','text-anchor':'middle'},app[i]);
+    el(s,'text',{x:x+bw/2,y:B+14,'font-size':9,fill:'#777','text-anchor':'middle'},lab);
+    pts.push([x+bw/2,B-(btc[i]-40)/80*(B-T)]);
+  });
+  el(s,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#f7931a','stroke-width':2.5});
+  pts.forEach((p,i)=>el(s,'circle',{cx:p[0],cy:p[1],r:3,fill:'#f7931a'}));
+  el(s,'rect',{x:300,y:300,width:12,height:12,fill:'#9acc00'});el(s,'text',{x:318,y:310,'font-size':11},'Robinhood App 加密交易额（左轴）');
+  el(s,'line',{x1:520,y1:306,x2:540,y2:306,stroke:'#f7931a','stroke-width':2.5});el(s,'text',{x:546,y:310,'font-size':11},'BTC月末价格（右轴）');
+})();
+
+// Chart 2: revenue bridge waterfall
+(function(){
+  const s=document.getElementById('c2');
+  const steps=[["Q3'25",268,'t'],["BTC价格",-81,'d'],["散户流失",-38,'d'],["费率压缩",-41,'d'],["Bitstamp",-14,'d'],["Chain",26,'u'],["Q3'26",120,'t']];
+  const L=50,B=250,sc=0.75,n=steps.length,step=820/n,bw=step*0.6;let run=0;
+  el(s,'line',{x1:L,y1:B,x2:L+820,y2:B,stroke:'#ccc'});
+  steps.forEach((st,i)=>{
+    const x=L+i*step+(step-bw)/2;let y,h,c;
+    if(st[2]==='t'){h=st[1]*sc;y=B-h;run=st[1];c='#111';}
+    else{const start=run,end=run+st[1];h=Math.abs(st[1])*sc;y=B-Math.max(start,end)*sc;run=end;c=st[2]==='d'?(i===2||i===3?'#e8a33d':'#cc3333'):'#0a8a2e';}
+    el(s,'rect',{x:x,y:y,width:bw,height:h,fill:c});
+    el(s,'text',{x:x+bw/2,y:y-5,'font-size':12,'font-weight':700,'text-anchor':'middle',fill:c},(st[2]==='t'?'$':(st[1]>0?'+':''))+st[1]);
+    el(s,'text',{x:x+bw/2,y:B+16,'font-size':11,'text-anchor':'middle',fill:'#555'},st[0]);
+  });
+  el(s,'text',{x:L+410,y:290,'font-size':11,'text-anchor':'middle',fill:'#888'},'红色 = 市场因素 · 橙色 = 散户行为与Robinhood费率 · 绿色 = 新业务（$M）');
+})();
+
+// Chart 3: event contracts vs crypto revenue
+(function(){
+  const s=document.getElementById('c3');
+  const q=["Q3'25","Q4'25","Q1'26","Q2'26","Q3'26"],cr=[268,221,134,100,120],ev=[27,101,104,156,173];
+  const L=40,B=200,T=20,step=380/5,bw=24,sc=(B-T)/280;
+  el(s,'line',{x1:L,y1:B,x2:L+380,y2:B,stroke:'#ccc'});
+  q.forEach((lab,i)=>{const x=L+i*step+10;
+    el(s,'rect',{x:x,y:B-cr[i]*sc,width:bw,height:cr[i]*sc,fill:'#f7931a'});
+    el(s,'rect',{x:x+bw+3,y:B-ev[i]*sc,width:bw,height:ev[i]*sc,fill:'#111'});
+    el(s,'text',{x:x+bw/2,y:B-cr[i]*sc-3,'font-size':9,'text-anchor':'middle'},cr[i]);
+    el(s,'text',{x:x+bw*1.5+3,y:B-ev[i]*sc-3,'font-size':9,'text-anchor':'middle'},ev[i]);
+    el(s,'text',{x:x+bw+1,y:B+14,'font-size':10,'text-anchor':'middle',fill:'#666'},lab);});
+  el(s,'rect',{x:110,y:222,width:10,height:10,fill:'#f7931a'});el(s,'text',{x:124,y:231,'font-size':10},'加密收入');
+  el(s,'rect',{x:210,y:222,width:10,height:10,fill:'#111'});el(s,'text',{x:224,y:231,'font-size':10},'事件合约收入 ($M)');
+})();
+
+// Chart 4: App take rate
+(function(){
+  const s=document.getElementById('c4');
+  const q=["Q3'25(估)","Q4'25","Q1'26","Q2'26","Q3'26"],tr=[62.6,60.0,50.8,51.4,42.7],vol=[39.6,34.0,23.8,18.3,20.6];
+  const L=40,B=200,T=20,step=380/5,bw=34;
+  el(s,'line',{x1:L,y1:B,x2:L+380,y2:B,stroke:'#ccc'});
+  let pts=[];
+  q.forEach((lab,i)=>{const x=L+i*step+20,h=vol[i]/45*(B-T);
+    el(s,'rect',{x:x,y:B-h,width:bw,height:h,fill:'#d9d9cf'});
+    el(s,'text',{x:x+bw/2,y:B-h+13,'font-size':9,'text-anchor':'middle',fill:'#555'},'$'+vol[i]+'B');
+    const y=B-(tr[i]-20)/50*(B-T);pts.push([x+bw/2,y]);
+    el(s,'text',{x:x+bw/2,y:y-8,'font-size':11,'font-weight':700,'text-anchor':'middle',fill:'#cc3333'},tr[i]+'bps');
+    el(s,'text',{x:x+bw/2,y:B+14,'font-size':9.5,'text-anchor':'middle',fill:'#666'},lab);});
+  el(s,'polyline',{points:pts.map(p=>p.join(',')).join(' '),fill:'none',stroke:'#cc3333','stroke-width':2.5});
+  pts.forEach(p=>el(s,'circle',{cx:p[0],cy:p[1],r:3.5,fill:'#cc3333'}));
+  el(s,'text',{x:220,y:231,'font-size':10,'text-anchor':'middle',fill:'#666'},'灰柱 = App交易额 · 红线 = 每$1交易额的收入（bps）');
+})();
+
+// Chart 5: cycle analog (indexed revenue, peak = 100)
+(function(){
+  const s=document.getElementById('c5');
+  // quarters from revenue peak
+  const c1=[233,51,48,54,58,51,38,38,31,23,43,126].map(v=>v/233*100); // Q2'21..Q1'24
+  const c2=[358,252,160,268,221,134,100,94].map(v=>v/358*100);        // Q4'24..Q3'26 (Q3'26 ex-Chain)
+  const L=60,R=860,T=25,B=245,n=12,step=(R-L)/(n-1);
+  el(s,'line',{x1:L,y1:B,x2:R,y2:B,stroke:'#ccc'});
+  [0,25,50,75,100].forEach(v=>{const y=B-v/100*(B-T);el(s,'text',{x:L-6,y:y+4,'font-size':10,fill:'#888','text-anchor':'end'},v);el(s,'line',{x1:L,y1:y,x2:R,y2:y,stroke:'#f2f2f2'});});
+  for(let i=0;i<n;i++)el(s,'text',{x:L+i*step,y:B+14,'font-size':9,fill:'#888','text-anchor':'middle'},'+'+i+'Q');
+  function line(d,c,w,dash){const p=d.map((v,i)=>[L+i*step,B-v/100*(B-T)]);el(s,'polyline',{points:p.map(a=>a.join(',')).join(' '),fill:'none',stroke:c,'stroke-width':w,'stroke-dasharray':dash||''});p.forEach(a=>el(s,'circle',{cx:a[0],cy:a[1],r:3,fill:c}));return p;}
+  const p1=line(c1,'#999',2,'5,4'),p2=line(c2,'#f7931a',3);
+  // markers
+  el(s,'text',{x:p1[2][0],y:p1[2][1]-10,'font-size':9.5,fill:'#666','text-anchor':'middle'},'BTC顶 (21年11月)');
+  el(s,'text',{x:p1[6][0],y:p1[6][1]-10,'font-size':9.5,fill:'#666','text-anchor':'middle'},'BTC底 (22年11月)');
+  el(s,'text',{x:p1[9][0],y:p1[9][1]+18,'font-size':9.5,fill:'#666','text-anchor':'middle'},'收入底 Q3\'23');
+  el(s,'text',{x:p2[4][0],y:p2[4][1]-10,'font-size':9.5,fill:'#c26a00','text-anchor':'middle'},'BTC顶 (25年10月)');
+  el(s,'text',{x:p2[7][0]+4,y:p2[7][1]-12,'font-size':9.5,fill:'#c26a00','text-anchor':'middle'},'BTC底 (26年7月) → 现在');
+  el(s,'line',{x1:250,y1:275,x2:275,y2:275,stroke:'#999','stroke-width':2,'stroke-dasharray':'5,4'});el(s,'text',{x:281,y:279,'font-size':11},'周期1：Q2\'21峰值=100');
+  el(s,'line',{x1:470,y1:275,x2:495,y2:275,stroke:'#f7931a','stroke-width':3});el(s,'text',{x:501,y:279,'font-size':11},'周期2：Q4\'24峰值=100（Q3\'26剔除Chain）');
+})();
+</script>
+</body>
+</html>
